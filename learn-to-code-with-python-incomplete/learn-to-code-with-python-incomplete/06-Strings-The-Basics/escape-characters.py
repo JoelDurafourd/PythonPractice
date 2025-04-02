@@ -1,0 +1,6 @@
+print("and" in "commando") 
+print("commando"[3:7])
+print("monroeville"[6:])
+print("destiny"[:4])
+print("november"[6])
+print("misfortune"[10])
