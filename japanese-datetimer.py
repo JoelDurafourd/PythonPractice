@@ -1,3 +1,6 @@
+import csv
+import os
+
 month = "default"
 days_of_month = 31
 user_input_month = input("Please enter your month (jan, feb, mar, apr, may, jun, jul, aug, sep, oct, nov, dec) ").lower()
@@ -56,10 +59,27 @@ def weekday_reset(number):
 
 weekday = day_week_int_convert(user_input_day)
 
-
 print(f"{user_input_month} has {days_of_month} days")
-print(weekday)
 
+# Prepare data for CSV
+csv_data = []
+
+# Generate the day-week pairs and add them to the csv_data list
 for i in range(days_of_month):
-    print(f"{i + 1} {day_week_conversion(weekday)}")
+    day_week_pair = f"{i + 1} {day_week_conversion(weekday)}"
+    csv_data.append([day_week_pair])  # Add each pair in a new column
     weekday = weekday_reset(weekday)
+
+# Define the file path
+file_path = f"{user_input_month}_days.csv"
+
+# Print the file path for debugging purposes
+print(f"Saving to: {os.path.abspath(file_path)}")
+
+# Write data to a CSV file with UTF-8 encoding
+with open(file_path, "w", newline="", encoding="utf-8") as file:
+    writer = csv.writer(file)
+    writer.writerow(["Days of the Month"])  # Optional header
+    writer.writerows(csv_data)
+
+print(f"CSV file '{file_path}' has been created.")
