@@ -3,14 +3,18 @@ days_of_month = 31
 user_input_month = input("Please enter your month (jan, feb, mar, apr, may, jun, jul, aug, sep, oct, nov, dec) ").lower()
 user_input_day = input("Please enter the first day of that month (sun, mon, tue, wed, thu, fri, sat) ").lower()
 
+print(user_input_month)
+
 if user_input_month == "feb":
     leap_year = input("is it a leapyear? y/n ")
     if leap_year == "y":
         days_of_month = 29
     else:
         days_of_month = 28
-elif user_input_month == "apr" or "jun" or "sep" or "nov":
+elif user_input_month in ["apr", "jun", "sep", "nov"]:
     days_of_month = 30
+else:
+    days_of_month = 31
 
 def day_week_int_convert(number):
     if number == "mon":
