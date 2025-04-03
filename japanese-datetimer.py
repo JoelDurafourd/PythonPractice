@@ -58,13 +58,6 @@ weekday = day_week_int_convert(user_input_day)
 
 print(f"{user_input_month} has {days_of_month} days")
 
-# Prepare a list of formatted day-week pairs separated by tabs
-output = []
-
 for i in range(days_of_month):
-    # Use \t to separate columns
-    output.append(f"{i + 1} {day_week_conversion(weekday)}")
+    print(f"{i + 1} {day_week_conversion(weekday)}")
     weekday = weekday_reset(weekday)
-
-# Join the output with tabs to ensure proper column separation in Excel when pasted
-print("\t".join(output))
